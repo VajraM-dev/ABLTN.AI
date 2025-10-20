@@ -80,9 +80,6 @@ uv run main.py
 ```
 
 ## Future Work
-- Improving the quality of results.
-- Adding Web Search Agent
-- Adding Capability to Search Youtube Tutorials and Suggest Tips and Tricks.
 - Making it Deployment ready with FastAPI, Docker. 
 - We are also planning to release the agent as paid service.
 - There are also plans to integrate the agent with Max For Live to make it easily accessible in Ableton. 
