@@ -8,7 +8,6 @@ def grader_tool(query: str, chunks: list[str]) -> dict:
     prompt = GRADE_PROMPT.format(question=query, context=chunks)
 
     result = agent.invoke({"messages": [{"role": "user", "content": prompt}]})
-    print("Grading Result:", result["structured_response"])
 
     if isinstance(result["structured_response"], GradeDocuments):
         if result["structured_response"].binary_score.lower() == 'yes':

@@ -1,40 +1,42 @@
-from src.agents.retrival_agent import agent
-from langchain_core.runnables import RunnableConfig
+# from src.agents.retrival_agent import agent
+# from langchain_core.runnables import RunnableConfig
 
-def get_response(query: str, config: str = "default"):
-    config: RunnableConfig = {"configurable": {"thread_id": config}}
+from src.agents.main_agent import resond_to_user
 
-    query = (
-        """System Instructions: You must use retrieve_context tool for ANY question about:
-        - Ableton Live features, settings, or workflows
-        - Technical issues, troubleshooting, or errors
-        - How to do something in Ableton Live
-        - Specific Ableton functions, devices, or instruments
+# def get_response(query: str, config: str = "default"):
+#     config: RunnableConfig = {"configurable": {"thread_id": config}}
 
-        Do NOT use retrieve_context for:
-        - Greetings (hi, hello, how are you)
-        - General conversation unrelated to Ableton
+#     query = (
+#         """System Instructions: You must use retrieve_context tool for ANY question about:
+#         - Ableton Live features, settings, or workflows
+#         - Technical issues, troubleshooting, or errors
+#         - How to do something in Ableton Live
+#         - Specific Ableton functions, devices, or instruments
 
-        Remember user specific information like name, preferences, and past interactions to provide personalized responses.
+#         Do NOT use retrieve_context for:
+#         - Greetings (hi, hello, how are you)
+#         - General conversation unrelated to Ableton
+
+#         Remember user specific information like name, preferences, and past interactions to provide personalized responses.
         
-        \n\n
-        """
+#         \n\n
+#         """
 
-        f"User Query: {query}"
-    )
+#         f"User Query: {query}"
+#     )
 
-    for event in agent.stream(
-        {"messages": [{"role": "user", "content": query}]},
-        config,
-        stream_mode="values",
-    ):
+#     for event in agent.stream(
+#         {"messages": [{"role": "user", "content": query}]},
+#         config,
+#         stream_mode="values",
+#     ):
 
-        # Each chunk contains the full state at that point
-        latest_message = event["messages"][-1]
-        if latest_message.content:
-            print(f"Agent: {latest_message.content}")
-        elif latest_message.tool_calls:
-            print(f"Calling tools: {[tc['name'] for tc in latest_message.tool_calls]}")
+#         # Each chunk contains the full state at that point
+#         latest_message = event["messages"][-1]
+#         if latest_message.content:
+#             print(f"Agent: {latest_message.content}")
+#         elif latest_message.tool_calls:
+#             print(f"Calling tools: {[tc['name'] for tc in latest_message.tool_calls]}")
 
 def main():
 
@@ -43,7 +45,7 @@ def main():
         if query.lower() in ["exit", "quit"]:
             break
         else:
-            get_response(
+            resond_to_user(
                 query,
                 config="1",
             )
