@@ -1,0 +1,30 @@
+[project]
+name = "ableton-agent"
+version = "0.1.0"
+description = "This is an AI agent designed to assist with Ableton Live questions and linked to ableton-related resources."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "torch==2.5.1+cu121",
+    "torchaudio==2.5.1+cu121",
+    "torchvision==0.20.1+cu121",
+    "langchain>=1.0.0",
+    "langchain-community>=0.4",
+    "langchain-openai>=1.0.0",
+    "langchain-postgres>=0.0.16",
+    "langgraph>=1.0.0",
+    "psycopg2>=2.9.11",
+    "python-dotenv>=1.1.1",
+    "sentence-transformers>=5.1.1",
+    "langgraph-checkpoint-postgres>=2.0.25",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu121" }
+torchvision = { index = "pytorch-cu121" }
+torchaudio = { index = "pytorch-cu121" }
