@@ -1,0 +1,32 @@
+[project]
+name = "Embedder"
+version = "0.1.0"
+description = "This code is responsible for embedding Ableton Live manual and providing retrieval capabilities for an Ableton chatbot."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "docling>=2.57.0",
+    "langchain-community>=0.4",
+    "langchain-openai>=1.0.0",
+    "langchain-postgres>=0.0.16",
+    "langchain-text-splitters>=1.0.0",
+    "orjson>=3.11.3",
+    "psycopg2>=2.9.11",
+    "pymupdf>=1.26.5",
+    "pypdf2>=3.0.1",
+    "python-dotenv>=1.1.1",
+    "tiktoken>=0.12.0",
+    "torch==2.5.1+cu121",
+    "torchaudio==2.5.1+cu121",
+    "torchvision==0.20.1+cu121",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu121" }
+torchvision = { index = "pytorch-cu121" }
+torchaudio = { index = "pytorch-cu121" }
